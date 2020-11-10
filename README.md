@@ -4,6 +4,7 @@
 
 ## Basics
 
-- yarn start
-- yarn test
-- yarn build
+- `yarn start`
+- `yarn test`
+- `yarn build`
+- `yarn analyze`: analyzing the bundle size
