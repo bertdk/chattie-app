@@ -1,4 +1,4 @@
-import { HomeComponent } from 'components/Home.component';
+import { HomeComponent } from 'components/Home/Home.component';
 import { LoginContainer } from 'containers/auth/Login.container';
 import { PrivateRoute } from 'containers/auth/PrivateRoute.container';
 import React from 'react';

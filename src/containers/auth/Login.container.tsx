@@ -1,5 +1,5 @@
 import { loadUserAsync } from 'actions/user.action';
-import { LoginComponent } from 'components/Login.component';
+import { LoginComponent } from 'components/Login/Login.component';
 import { Formik, FormikHelpers } from 'formik';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
