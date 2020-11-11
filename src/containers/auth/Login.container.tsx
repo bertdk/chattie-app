@@ -1,5 +1,5 @@
 import { loadUserAsync } from 'actions/user.action';
-import { LoginComponent } from 'components/login.component';
+import { LoginComponent } from 'components/Login.component';
 import { Formik, FormikHelpers } from 'formik';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,8 +21,8 @@ export function LoginContainer() {
   return (
     <Formik
       initialValues={{
-        name: '',
-        room: '',
+        name: 'Tess',
+        room: 'Test',
       }}
       onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
         dispatch(loadUserAsync(values.name, values.room));
