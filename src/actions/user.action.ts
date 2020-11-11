@@ -5,5 +5,5 @@ export const loadUserAsync = (name: string, room: string): AppThunk => (dispatch
   dispatch(load());
   setTimeout(() => {
     dispatch(loaded({ name, room }));
-  }, 1000);
+  }, 3000);
 };
