@@ -1,21 +1,19 @@
-import { loadUserAsync } from 'actions/user.action';
+import { HomeComponent } from 'components/home.component';
+import { LoginComponent } from 'components/login.component';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUserLoaded, selectUserName } from 'selectors/user.selector';
-import s from './app.module.scss';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 function App() {
-  const name = useSelector(selectUserName);
-  const loaded = useSelector(selectUserLoaded);
-  const dispatch = useDispatch();
-
   return (
-    <div className={s.app}>
-      {loaded ? <p>{name}</p> : <p>Loading</p>}
-      <button aria-label="Set name" onClick={() => dispatch(loadUserAsync('Bert'))}>
-        Name it
-      </button>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={HomeComponent} />
+        <Route exact path="/login" component={LoginComponent} />
+        <Route path="*">
+          <Redirect to="/login" />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
