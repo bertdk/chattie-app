@@ -4,6 +4,6 @@ import { AppThunk } from 'store';
 export const loadUserAsync = (name: string): AppThunk => (dispatch) => {
   dispatch(load());
   setTimeout(() => {
-    dispatch(loaded(name));
+    dispatch(loaded({ name, room: 'test' }));
   }, 5000);
 };
