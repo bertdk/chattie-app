@@ -1,15 +1,20 @@
+import { loadUserAsync } from 'actions/user.action';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserLoaded, selectUserName } from 'selectors/user.selector';
 import s from './app.module.scss';
 
 function App() {
+  const name = useSelector(selectUserName);
+  const loaded = useSelector(selectUserLoaded);
+  const dispatch = useDispatch();
+
   return (
     <div className={s.app}>
-      <p className={s.text}>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
+      {loaded ? <p>{name}</p> : <p>Loading</p>}
+      <button aria-label="Set name" onClick={() => dispatch(loadUserAsync('Bert'))}>
+        Name it
+      </button>
     </div>
   );
 }
