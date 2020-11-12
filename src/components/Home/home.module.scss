@@ -17,7 +17,8 @@
   }
 
   &Message {
-    background-color: lighten($gray, 25%);
+    background-color: lighten($gray, 28%);
+    border-radius: 4px;
     margin: 16px 16px;
     padding: 1px 8px;
 
@@ -26,7 +27,18 @@
     }
 
     &Head {
-      font-size: small;
+      font-size: x-small;
+      color: lighten($offBlack, 15%);
+
+      &Name {
+        color: $primary;
+        font-weight: 200;
+        font-size: small;
+      }
+    }
+
+    &Text {
+      word-wrap: break-word;
       color: $offBlack;
     }
   }
