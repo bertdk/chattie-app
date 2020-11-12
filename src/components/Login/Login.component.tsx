@@ -10,7 +10,7 @@ export const LoginComponent = () => (
       <h1>Login</h1>
       <Grid container direction="column" justify="flex-start" alignItems="center" spacing={3}>
         <Grid item>
-          <Field component={TextField} label="Name" id="name" name="name" />
+          <Field component={TextField} label="Name" id="name" name="name" autoFocus />
         </Grid>
         <Grid item>
           <Field component={TextField} label="Room" id="room" name="room" />

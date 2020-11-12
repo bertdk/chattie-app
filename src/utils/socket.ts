@@ -1,13 +1,10 @@
+import { loadRoom } from 'actions/room.action';
 import socketIoClient from 'socket.io-client';
 
-// export const socket = socketIoClient('http://192.168.0.179:8000');
-export const socket = socketIoClient('https://chattie-api-prod.herokuapp.com/');
+export const socket = socketIoClient('http://192.168.0.179:8000');
+// export const socket = socketIoClient('https://chattie-api-prod.herokuapp.com/');
 
-export const initSocket = () => {
-  socket.on('message', ({ text }: { text: string }) => {
-    console.log('message from server:', text);
-  });
-};
+export const initSocket = () => {};
 
 export const joinRoom = (username: string, room: string) => {
   socket.emit('join', { username, room }, (error: any) => {
@@ -18,7 +15,7 @@ export const joinRoom = (username: string, room: string) => {
 };
 
 export const sendMessage = (message: string) => {
-  socket.emit('messageSend', 'message', (error: any) => {
+  socket.emit('messageSend', message, (error: any) => {
     if (error) {
       return console.log('ack', error);
     }
@@ -37,5 +34,7 @@ socket.on('locationMessage', (location: any) => {
 });
 
 socket.on('roomData', ({ users, room }: any) => {
-  console.log('users, room', users, room);
+  const names: string[] = users.map((u: any) => u.username);
+  loadRoom(names, room);
+  console.log('users, room, names', users, room, names);
 });

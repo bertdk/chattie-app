@@ -1,10 +1,9 @@
 import { loadUserAsync } from 'actions/user.action';
 import { LoginComponent } from 'components/Login/Login.component';
 import { Formik } from 'formik';
+import { BrowserHistory } from 'history';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { selectUserLoaded } from 'selectors/user.selector';
+import { useDispatch } from 'react-redux';
 import { loginValidationSchema } from 'validation/login.validation';
 
 interface Values {
@@ -12,24 +11,23 @@ interface Values {
   room: string;
 }
 
-export function LoginContainer() {
-  const loaded = useSelector(selectUserLoaded);
+export const LoginContainer = ({ history }: { history: BrowserHistory }) => {
   const dispatch = useDispatch();
-  if (loaded) {
-    return <Redirect to="/" />;
-  }
+  const onSubmit = (values: Values) => {
+    dispatch(loadUserAsync(values.name, values.room));
+    history.push('/');
+  };
+
   return (
     <Formik
       initialValues={{
-        name: '',
-        room: '',
+        name: 'Bert',
+        room: 'Test',
       }}
       validationSchema={loginValidationSchema}
-      onSubmit={(values: Values) => {
-        dispatch(loadUserAsync(values.name, values.room));
-      }}
+      onSubmit={onSubmit}
     >
       <LoginComponent />
     </Formik>
   );
-}
+};

@@ -1,4 +1,4 @@
-import { RootState } from 'store';
+import { RootState } from 'reducers/store';
 
 export const selectUserName = (state: RootState) => state.user.name;
 export const selectUserRoom = (state: RootState) => state.user.room;

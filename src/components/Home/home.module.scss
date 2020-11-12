@@ -1,5 +1,33 @@
 @import 'styles/styles.scss';
 
-.app {
-  background-color: $primary;
+.messages {
+  width: 100%;
+  height: 100%;
+
+  &Form {
+    max-width: 100%;
+    width: 90%;
+    padding: 16px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  &Display {
+    height: 90%;
+  }
+
+  &Message {
+    background-color: lighten($gray, 25%);
+    margin: 16px 16px;
+    padding: 1px 8px;
+
+    * {
+      margin: 4px 0;
+    }
+
+    &Head {
+      font-size: small;
+      color: $offBlack;
+    }
+  }
 }

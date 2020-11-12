@@ -1,9 +1,11 @@
 import { load, loaded } from 'reducers/user.reducer';
-import { AppThunk } from 'store';
+import { AppThunk } from 'reducers/store';
+import { joinRoom } from 'utils/socket';
 
-export const loadUserAsync = (name: string, room: string): AppThunk => (dispatch) => {
+export const loadUserAsync = (name: string, room: string): AppThunk => async (dispatch) => {
   dispatch(load());
-  setTimeout(() => {
-    dispatch(loaded({ name, room }));
-  }, 3000);
+
+  await dispatch(loaded({ name, room }));
+
+  joinRoom(name, room);
 };
