@@ -1,0 +1,19 @@
+@import 'styles/styles.scss';
+
+.box {
+  width: fit-content;
+  margin: auto;
+  padding: 32px;
+  background-color: $offWhite;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: darken($gray, 40%);
+}
+
+.fullWidth {
+  width: 100%;
+}

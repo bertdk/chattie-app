@@ -1,22 +1,25 @@
-import React from "react";
+import { LoginContainer } from 'containers/auth/Login.container';
+import { PrivateRoute } from 'containers/auth/PrivateRoute.container';
+import { HomeContainer } from 'containers/home/Home.container';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { initSocket } from 'utils/socket';
 
 function App() {
+  useEffect(() => {
+    initSocket();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={HomeContainer} />
+        <Route exact path="/login" component={LoginContainer} />
+        <Route path="*">
+          <Redirect to="/login" />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 
