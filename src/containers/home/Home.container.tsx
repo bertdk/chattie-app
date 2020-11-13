@@ -19,11 +19,20 @@ export const HomeContainer = () => {
       });
     });
   }, []);
+
+  const initialValues = () => {
+    return process.env.NODE_ENV === 'development'
+      ? {
+          message: 'Hey',
+        }
+      : {
+          message: '',
+        };
+  };
+
   return (
     <Formik
-      initialValues={{
-        message: 'Hey',
-      }}
+      initialValues={initialValues()}
       validationSchema={messageValidationSchema}
       onSubmit={(values: Values, { setSubmitting }) => {
         sendMessage(values.message);
