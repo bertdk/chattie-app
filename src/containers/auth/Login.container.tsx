@@ -18,15 +18,20 @@ export const LoginContainer = ({ history }: { history: BrowserHistory }) => {
     history.push('/');
   };
 
+  const initialValues = () => {
+    return process.env.NODE_ENV === 'development'
+      ? {
+          name: 'Hey',
+          room: 'Test',
+        }
+      : {
+          name: '',
+          room: '',
+        };
+  };
+
   return (
-    <Formik
-      initialValues={{
-        name: 'Bert',
-        room: 'Test',
-      }}
-      validationSchema={loginValidationSchema}
-      onSubmit={onSubmit}
-    >
+    <Formik initialValues={initialValues()} validationSchema={loginValidationSchema} onSubmit={onSubmit}>
       <LoginComponent />
     </Formik>
   );

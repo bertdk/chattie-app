@@ -1,10 +1,8 @@
 import { loadRoom } from 'actions/room.action';
 import socketIoClient from 'socket.io-client';
 
-// export const socket = socketIoClient('http://192.168.0.179:8000');
-export const socket = socketIoClient('https://chattie-api-prod.herokuapp.com/');
-
-export const initSocket = () => {};
+export const socket = socketIoClient('http://localhost:8000', { transports: ['websocket'] });
+// export const socket = socketIoClient('https://chattie-api-prod.herokuapp.com/');
 
 export const joinRoom = (username: string, room: string) => {
   socket.emit('join', { username, room }, (error: any) => {
