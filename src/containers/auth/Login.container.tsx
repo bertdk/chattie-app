@@ -20,7 +20,7 @@ export const LoginContainer = ({ history }: { history: BrowserHistory }) => {
 
   const initialValues = () => {
     console.log('process.env', process.env);
-    return process.env.NODE_ENV === 'development'
+    return process.env.REACT_APP_NODE_ENV === 'development'
       ? {
           name: 'Hey',
           room: 'Test',
