@@ -21,7 +21,7 @@ export const HomeContainer = () => {
   }, []);
 
   const initialValues = () => {
-    return process.env.NODE_ENV === 'development'
+    return process.env.REACT_APP_NODE_ENV === 'development'
       ? {
           message: 'Hey',
         }
