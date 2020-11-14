@@ -7,7 +7,7 @@ import { TextField } from 'formik-material-ui';
 import { MessageComponent } from './Message.component';
 import { IMessage } from 'utils/interfaces/message.interface';
 
-export const HomeComponent = ({ messages }: { messages: IMessage[] }) => {
+export const HomeComponent = ({ messages, setInputRef }: { messages: IMessage[]; setInputRef: any }) => {
   return (
     <div className={cx(s.messages)}>
       <div className={cx(s.messagesDisplay)}>
@@ -17,11 +17,20 @@ export const HomeComponent = ({ messages }: { messages: IMessage[] }) => {
       </div>
       <Form className={cx(s.messagesForm)}>
         <Grid container direction="row" justify="center" alignItems="center" spacing={3}>
-          <Grid item sm={10}>
-            <Field component={TextField} label="Message" id="message" name="message" fullWidth autoFocus variant="outlined" />
+          <Grid item xs={10}>
+            <Field
+              component={TextField}
+              label="Message"
+              id="message"
+              name="message"
+              fullWidth
+              autoFocus
+              variant="outlined"
+              inputRef={(ref: any) => setInputRef(ref)}
+            />
           </Grid>
-          <Grid item sm={2}>
-            <Button variant="contained" color="primary" type="submit" fullWidth size="small">
+          <Grid item xs={2}>
+            <Button variant="contained" color="primary" type="submit" fullWidth size="large">
               Send
             </Button>
           </Grid>
