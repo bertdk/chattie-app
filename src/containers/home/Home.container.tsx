@@ -1,5 +1,5 @@
 import { HomeComponent } from 'components/Home/Home.component';
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { IMessage } from 'utils/interfaces/message.interface';
 import { sendMessage, socket } from 'utils/socket';
@@ -13,13 +13,20 @@ export const HomeContainer = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
   useEffect(() => {
     socket.on('message', ({ text, username, createdAt }: { text: string; username: string; createdAt: string }) => {
-      console.log('message from server:', username, 'says', text);
       setMessages((old) => {
         return [...old, { message: text, name: username, createdAt }];
       });
     });
   }, []);
 
+  const [inputRef, setInputRef]: any = useState(null);
+
+  useEffect(() => {
+    console.log('inputRef', inputRef);
+    if (inputRef) {
+      inputRef.focus();
+    }
+  }, [inputRef, messages]);
   const initialValues = () => {
     return process.env.REACT_APP_NODE_ENV === 'development'
       ? {
@@ -34,12 +41,13 @@ export const HomeContainer = () => {
     <Formik
       initialValues={initialValues()}
       validationSchema={messageValidationSchema}
-      onSubmit={(values: Values, { setSubmitting }) => {
+      onSubmit={(values: Values, { setSubmitting, resetForm }: FormikHelpers<Values>) => {
         sendMessage(values.message);
         setSubmitting(false);
+        resetForm();
       }}
     >
-      <HomeComponent messages={messages} />
+      <HomeComponent messages={messages} setInputRef={setInputRef} />
     </Formik>
   );
 };
