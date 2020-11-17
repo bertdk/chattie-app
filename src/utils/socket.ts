@@ -34,5 +34,4 @@ socket.on('locationMessage', (location: any) => {
 socket.on('roomData', ({ users, room }: any) => {
   const names: string[] = users.map((u: any) => u.username);
   loadRoom(names, room);
-  console.log('users, room, names', users, room, names);
 });
