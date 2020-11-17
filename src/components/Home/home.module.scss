@@ -16,6 +16,8 @@
 
   &Display {
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
   }
 
   &Message {
@@ -24,6 +26,14 @@
     margin: 16px 16px;
     padding: 1px 16px;
     width: fit-content;
+
+    &Admin {
+      align-self: center;
+    }
+
+    &Mine {
+      align-self: flex-end;
+    }
 
     * {
       margin: 4px 0;
