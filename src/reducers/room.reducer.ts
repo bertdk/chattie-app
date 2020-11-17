@@ -29,7 +29,6 @@ export const roomSlice = createSlice({
       state.load = true;
     },
     loaded: (state, action: PayloadAction<RoomPayload>) => {
-      console.log('state', state);
       state.loaded = true;
       state.room = action.payload.room;
       state.names = action.payload.names;

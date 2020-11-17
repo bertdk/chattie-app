@@ -22,7 +22,6 @@ export const HomeContainer = () => {
   const [inputRef, setInputRef]: any = useState(null);
 
   useEffect(() => {
-    console.log('inputRef', inputRef);
     if (inputRef) {
       inputRef.focus();
     }
