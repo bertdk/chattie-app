@@ -44,6 +44,7 @@ export const HomeContainer = () => {
         sendMessage(values.message);
         setSubmitting(false);
         resetForm();
+        inputRef.focus();
       }}
     >
       <HomeComponent messages={messages} setInputRef={setInputRef} />
