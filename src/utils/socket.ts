@@ -13,6 +13,9 @@ export const joinRoom = (username: string, room: string) => {
 };
 
 export const sendMessage = (message: string) => {
+  if (!message.trim()) {
+    return;
+  }
   socket.emit('messageSend', message, (error: any) => {
     if (error) {
       return console.log('ack', error);
