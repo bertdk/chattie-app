@@ -6,6 +6,7 @@ import s from './home.module.scss';
 import { admin } from 'constants/people';
 import { useSelector } from 'react-redux';
 import { selectUserName } from 'selectors/user.selector';
+import { americanTo24 } from 'utils/helpers/time';
 
 export const MessageComponent = ({ message: { name, createdAt, message } }: { message: IMessage }) => {
   const username = useSelector(selectUserName);
@@ -21,7 +22,7 @@ export const MessageComponent = ({ message: { name, createdAt, message } }: { me
       }}
     >
       <p className={s.messagesMessageHead}>
-        {createdAt} -– <span className={s.messagesMessageHeadName}>{name}</span>
+        {americanTo24(createdAt)} —— <span className={s.messagesMessageHeadName}>{name}</span>
       </p>
       <p className={s.messagesMessageText}>{message}</p>
     </div>
