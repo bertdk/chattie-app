@@ -16,14 +16,25 @@
 
   &Display {
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 28px 0;
   }
 
   &Message {
-    background-color: lighten($gray, 28%);
+    background-color: lighten($primary, 50%);
     border-radius: 4px;
-    margin: 16px 16px;
-    padding: 1px 16px;
+    margin: 4px 0;
+    padding: 2px 16px;
     width: fit-content;
+
+    &Admin {
+      align-self: center;
+    }
+
+    &Mine {
+      align-self: flex-end;
+    }
 
     * {
       margin: 4px 0;
@@ -31,7 +42,8 @@
 
     &Head {
       font-size: x-small;
-      color: lighten($offBlack, 15%);
+      color: $gray;
+      font-weight: 200;
 
       &Name {
         color: $primary;

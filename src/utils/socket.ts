@@ -13,6 +13,9 @@ export const joinRoom = (username: string, room: string) => {
 };
 
 export const sendMessage = (message: string) => {
+  if (!message.trim()) {
+    return;
+  }
   socket.emit('messageSend', message, (error: any) => {
     if (error) {
       return console.log('ack', error);
@@ -34,5 +37,4 @@ socket.on('locationMessage', (location: any) => {
 socket.on('roomData', ({ users, room }: any) => {
   const names: string[] = users.map((u: any) => u.username);
   loadRoom(names, room);
-  console.log('users, room, names', users, room, names);
 });
